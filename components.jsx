@@ -212,9 +212,9 @@ function Avatar({ size, src, alt, initials }) {
   );
 }
 
-function Rating({ value, count }) {
+function Rating({ value, count, size = "sm", starsOnly = false }) {
   return (
-    <span className="vl-rating vl-rating--sm">
+    <span className={`vl-rating vl-rating--${size}`}>
       <span className="vl-rating__stars" aria-label={`${value} out of 5 stars`}>
         {Array.from({ length: 5 }).map((_, i) => (
           <span key={i}>
@@ -222,10 +222,10 @@ function Rating({ value, count }) {
           </span>
         ))}
       </span>
-      {count !== undefined && (
+      {!starsOnly && (
         <>
           <span className="vl-rating__value">{value.toFixed(1)}</span>
-          <span className="vl-rating__count">({count})</span>
+          {count !== undefined && <span className="vl-rating__count">({count})</span>}
         </>
       )}
     </span>
@@ -307,7 +307,9 @@ function ProviderProfile() {
 
             <div className="nbd__stats">
               <div className="nbd__stat">
-                <div className="nbd__statv">5.0</div>
+                <div className="nbd__statv nbd__statv--rating">
+                  <Rating value={5.0} size="sm" />
+                </div>
                 <div className="nbd__statk">39 reviews</div>
               </div>
               <div className="nbd__stat">

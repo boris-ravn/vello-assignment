@@ -478,6 +478,16 @@ body {
 .nbd__statv--sm {
   font-size: 13px;
 }
+.nbd__statv--rating {
+  display: flex;
+  justify-content: center;
+}
+.nbd__statv--rating .vl-rating {
+  gap: 4px;
+}
+.nbd__statv--rating .vl-rating__stars {
+  gap: 0.5px;
+}
 .nbd__statk {
   font-size: 10.5px;
   font-weight: 600;
