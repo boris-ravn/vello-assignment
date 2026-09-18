@@ -141,9 +141,10 @@ function UserIcon() {
 
 /* ---- shared components ---- */
 
-function IconButton({ label, variant, children, onClick }) {
+function IconButton({ label, variant = "default", children, onClick, ...rest }) {
+  const modifier = variant === "default" ? "" : ` vl-iconbtn--${variant}`;
   return (
-    <button className={`vl-iconbtn vl-iconbtn--md vl-iconbtn--${variant}`} aria-label={label} onClick={onClick}>
+    <button className={`vl-iconbtn vl-iconbtn--md${modifier}`} aria-label={label} onClick={onClick} {...rest}>
       <span className="vl-iconbtn__i">{children}</span>
     </button>
   );
@@ -211,11 +212,16 @@ function ProviderProfile() {
 
       <div className="screen">
         <div className="appbar">
-          <IconButton label="Back" variant="ghost">
+          <IconButton label="Back" variant="default">
             <ArrowLeftIcon />
           </IconButton>
           <span className="appbar__title">Grace Lin</span>
-          <IconButton label="Save to favorites" variant="ghost" onClick={() => setSaved(!saved)}>
+          <IconButton
+            label="Save to favorites"
+            variant="default"
+            onClick={() => setSaved(!saved)}
+            aria-pressed={saved}
+          >
             <HeartIcon />
           </IconButton>
         </div>
@@ -351,7 +357,7 @@ function ProviderProfile() {
         </div>
 
         <div className="nbd__cta">
-          <IconButton label="Message Grace Lin" variant="secondary">
+          <IconButton label="Message Grace Lin" variant="default">
             <MessageCircleIcon />
           </IconButton>
           <button className="vl-btn vl-btn--lg vl-btn--full">

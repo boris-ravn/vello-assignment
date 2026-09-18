@@ -306,10 +306,6 @@ body {
 .vl-iconbtn--ghost:hover {
   background: var(--surface-sunken);
 }
-.vl-iconbtn--secondary {
-  background: var(--surface-card);
-  border-color: var(--border-strong);
-}
 
 /* ==== Hero ==== */
 .nbd__hero {
