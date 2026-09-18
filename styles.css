@@ -511,23 +511,58 @@ body {
   color: var(--text-body);
   margin: 0;
 }
-.nbd__since {
+.nbd__trustrow {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--green-700);
-  background: var(--green-50);
-  border: 1px solid var(--green-200);
-  border-radius: var(--radius-md);
-  padding: 8px 11px;
+  justify-content: space-between;
+  gap: 10px;
   margin-top: 13px;
 }
-.nbd__since svg {
-  width: 14px;
-  height: 14px;
+.nbd__trustmeta {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* ==== VerifiedBadge (first-class trust mark — verified against
+   https://vello-design-system.vercel.app/docs#/verified-badge) ==== */
+.vl-vbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  line-height: 1;
+}
+.vl-vbadge--sm {
+  font-size: 12px;
+  padding: 5px 11px 5px 8px;
+}
+.vl-vbadge--md {
+  font-size: 13px;
+  padding: 6px 13px 6px 9px;
+}
+.vl-vbadge--verified {
+  background: var(--success-tint);
+  color: var(--green-700);
+}
+.vl-vbadge--pending {
+  background: var(--warning-tint);
+  color: var(--amber-700);
+}
+.vl-vbadge--top-rated {
+  background: var(--amber-100);
+  color: var(--amber-700);
+}
+.vl-vbadge--unverified {
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+}
+.vl-vbadge__mark {
   flex: 0 0 auto;
+  display: block;
 }
 
 /* ==== Services ==== */

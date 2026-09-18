@@ -65,15 +65,6 @@ function FootprintsIcon() {
   );
 }
 
-function ShieldCheckIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-      <path d="m9 12 2 2 4-4" />
-    </svg>
-  );
-}
-
 function ChevronRightIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
@@ -156,6 +147,53 @@ function Badge({ variant = "neutral", size = "md", dot = false, icon, children }
       {dot && <i className="vl-badge__dot"></i>}
       {icon}
       {children}
+    </span>
+  );
+}
+
+const VERIFIED_STATUS_LABEL = {
+  verified: "Background-checked",
+  pending: "Verification pending",
+  "top-rated": "Top-rated neighbor",
+  unverified: "Not yet verified",
+};
+
+function VerifiedMark({ status = "verified", size = 17 }) {
+  if (status !== "verified") return null;
+  return (
+    <svg
+      className="vl-vmark vl-vbadge__mark"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      role="img"
+      aria-label={VERIFIED_STATUS_LABEL.verified}
+    >
+      <title>{VERIFIED_STATUS_LABEL.verified}</title>
+      <path
+        d="M12 2.2 4.6 5v6.1c0 4.6 3.1 7.9 7.4 9.6 4.3-1.7 7.4-5 7.4-9.6V5L12 2.2Z"
+        fill="var(--green-600)"
+        stroke="none"
+        strokeWidth="0"
+        strokeLinejoin="round"
+      />
+      <path
+        d="m8.4 12 2.5 2.5 4.7-5"
+        fill="none"
+        stroke="var(--paper)"
+        strokeWidth="2.1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function VerifiedBadge({ status = "verified", size = "md", label }) {
+  return (
+    <span className={`vl-vbadge vl-vbadge--${status} vl-vbadge--${size}`}>
+      <VerifiedMark status={status} size={size === "sm" ? 15 : 17} />
+      {label || VERIFIED_STATUS_LABEL[status]}
     </span>
   );
 }
@@ -291,9 +329,9 @@ function ProviderProfile() {
               Math and SAT prep for grades 7 through 12. We can work at the Bay Ridge library or at your
               kitchen table — whichever helps your kid focus.
             </p>
-            <div className="nbd__since">
-              <ShieldCheckIcon />
-              On Vello since 2025 · Background-checked by Vello
+            <div className="nbd__trustrow">
+              <span className="nbd__trustmeta">On Vello since 2025</span>
+              <VerifiedBadge status="verified" size="sm" />
             </div>
           </div>
 
