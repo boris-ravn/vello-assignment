@@ -392,29 +392,69 @@ body {
   margin-top: 12px;
 }
 
-/* ==== Badges (shared with card component) ==== */
-.nb__avail {
+/* ==== Badge (component, real API: variant/size/dot/icon — verified against
+   https://vello-design-system.vercel.app/docs#/badge computed styles) ==== */
+.vl-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  flex: 0 0 auto;
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 1;
-  color: var(--coral-700);
-  background: var(--coral-100);
-  padding: 5px 11px 5px 9px;
+  font-weight: var(--fw-semibold);
   border-radius: var(--radius-pill);
   white-space: nowrap;
+  line-height: 1;
 }
-.nb__avail i {
-  width: 6px;
-  height: 6px;
+.vl-badge--sm {
+  font-size: 11px;
+  padding: 4px 9px;
+}
+.vl-badge--md {
+  font-size: 13px;
+  padding: 6px 12px;
+}
+.vl-badge__dot {
+  width: 7px;
+  height: 7px;
   border-radius: 999px;
-  background: var(--coral-500);
+  background: currentcolor;
   flex: 0 0 auto;
-  font-style: normal;
+}
+.vl-badge svg {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+}
+.vl-badge--neutral {
+  background: var(--surface-sunken);
+  color: var(--text-muted);
+}
+.vl-badge--brand {
+  background: var(--brand-primary-tint);
+  color: var(--text-brand);
+}
+.vl-badge--success {
+  background: var(--success-tint);
+  color: var(--green-700);
+}
+.vl-badge--info {
+  background: var(--info-tint);
+  color: var(--sky-700);
+}
+.vl-badge--warning {
+  background: var(--warning-tint);
+  color: var(--amber-700);
+}
+.vl-badge--danger {
+  background: var(--danger-tint);
+  color: var(--red-700);
+}
+.vl-badge--accent {
+  background: var(--accent-tint);
+  color: var(--coral-700);
+}
+.vl-badge--solid {
+  background: var(--brand-primary);
+  color: #fff;
 }
 
 .nb__walk {

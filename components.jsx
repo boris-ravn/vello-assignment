@@ -149,6 +149,16 @@ function IconButton({ label, variant, children, onClick }) {
   );
 }
 
+function Badge({ variant = "neutral", size = "md", dot = false, icon, children }) {
+  return (
+    <span className={`vl-badge vl-badge--${variant} vl-badge--${size}`}>
+      {dot && <i className="vl-badge__dot"></i>}
+      {icon}
+      {children}
+    </span>
+  );
+}
+
 function Avatar({ size, src, alt, initials }) {
   return (
     <span className={`vl-avatar vl-avatar--${size}`}>
@@ -243,9 +253,9 @@ function ProviderProfile() {
             <div className="nbd__svc">Math &amp; SAT tutoring</div>
 
             <div className="nbd__badges">
-              <span className="nb__avail">
-                <i></i>Available
-              </span>
+              <Badge variant="success" dot>
+                Available
+              </Badge>
               <span className="nb__walk">
                 <FootprintsIcon />
                 14 min walk
