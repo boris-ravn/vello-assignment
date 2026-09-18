@@ -457,25 +457,6 @@ body {
   color: #fff;
 }
 
-.nb__walk {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--green-700);
-  background: var(--green-50);
-  white-space: nowrap;
-  border: 1px solid var(--green-200);
-  padding: 3px 9px 3px 7px;
-  border-radius: var(--radius-pill);
-}
-.nb__walk svg {
-  width: 13px;
-  height: 13px;
-}
-
 /* ==== Stats ==== */
 .nbd__stats {
   display: grid;

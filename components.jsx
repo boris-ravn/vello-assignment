@@ -256,10 +256,9 @@ function ProviderProfile() {
               <Badge variant="success" dot>
                 Available
               </Badge>
-              <span className="nb__walk">
-                <FootprintsIcon />
+              <Badge variant="neutral" icon={<FootprintsIcon />}>
                 14 min walk
-              </span>
+              </Badge>
             </div>
 
             <div className="nbd__stats">
