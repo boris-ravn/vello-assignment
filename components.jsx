@@ -319,9 +319,7 @@ function ProviderProfile() {
 
           <div className="nbd__sec">
             <div className="nbd__h">
-              <span className="section__title" style={{ fontSize: 17 }}>
-                Reviews
-              </span>
+              <span>Reviews</span>
               <span className="nbd__hrate">
                 <Rating value={5.0} count={39} />
               </span>

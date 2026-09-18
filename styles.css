@@ -689,15 +689,6 @@ body {
   color: var(--text-strong);
 }
 
-/* ==== Section (generic, used for Reviews heading + inline rating) ==== */
-.section__title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: -0.01em;
-  color: var(--text-strong);
-}
-
 /* ==== CTA footer ==== */
 .nbd__cta {
   flex: 0 0 auto;
