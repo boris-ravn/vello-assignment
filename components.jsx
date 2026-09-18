@@ -234,8 +234,9 @@ function Rating({ value, count, size = "sm", starsOnly = false }) {
 
 /* ---- profile screen ---- */
 
-function ProviderProfile() {
+function ProviderProfile({ available = true, reviewCount = 39 }) {
   const [saved, setSaved] = useState(false);
+  const hasReviews = reviewCount > 0;
 
   return (
     <div className="phone">
@@ -297,9 +298,11 @@ function ProviderProfile() {
             <div className="nbd__svc">Math &amp; SAT tutoring</div>
 
             <div className="nbd__badges">
-              <Badge variant="success" dot>
-                Available
-              </Badge>
+              {available && (
+                <Badge variant="success" dot>
+                  Available
+                </Badge>
+              )}
               <Badge variant="neutral" icon={<FootprintsIcon />}>
                 14 min walk
               </Badge>
@@ -308,9 +311,13 @@ function ProviderProfile() {
             <div className="nbd__stats">
               <div className="nbd__stat">
                 <div className="nbd__statv nbd__statv--rating">
-                  <Rating value={5.0} size="sm" />
+                  {hasReviews ? (
+                    <Rating value={5.0} size="sm" />
+                  ) : (
+                    <Badge variant="info">New</Badge>
+                  )}
                 </div>
-                <div className="nbd__statk">39 reviews</div>
+                <div className="nbd__statk">{hasReviews ? "39 reviews" : "No reviews yet"}</div>
               </div>
               <div className="nbd__stat">
                 <div className="nbd__statv">$40</div>
@@ -435,4 +442,28 @@ function ProviderProfile() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<ProviderProfile />);
+/* ---- audit harness: lets the two implemented states (zero-review,
+   unavailable) be inspected without hardcoding a second static screen ---- */
+
+function AuditDemo() {
+  const [available, setAvailable] = useState(true);
+  const [hasReviews, setHasReviews] = useState(true);
+
+  return (
+    <div className="demo-wrap">
+      <div className="demo-controls">
+        <label>
+          <input type="checkbox" checked={available} onChange={(e) => setAvailable(e.target.checked)} />
+          Available
+        </label>
+        <label>
+          <input type="checkbox" checked={hasReviews} onChange={(e) => setHasReviews(e.target.checked)} />
+          Has reviews
+        </label>
+      </div>
+      <ProviderProfile available={available} reviewCount={hasReviews ? 39 : 0} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<AuditDemo />);
